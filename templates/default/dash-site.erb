@@ -39,7 +39,7 @@
   RewriteCond /opt/dash/site_overlay%{REQUEST_FILENAME} -s
   RewriteRule ^/(.+) /opt/dash/site_overlay/$1 [L]
 
-  ErrorLog <%= node["apache"]["log_dir"] %>/error.log
+  ErrorLog <%= node["apache"]["log_dir"] %>/<%= node["apache"]["error_log"] %>
   LogLevel warn
   CustomLog <%= node["apache"]["log_dir"] %>/access.log combined
 </VirtualHost>
