@@ -41,5 +41,5 @@
 
   ErrorLog <%= node["apache"]["log_dir"] %>/<%= node["apache"]["error_log"] %>
   LogLevel warn
-  CustomLog <%= node["apache"]["log_dir"] %>/access.log combined
+  CustomLog <%= node["apache"]["log_dir"] %>/<%= node["apache"]["access_log"] %> combined
 </VirtualHost>
