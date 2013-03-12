@@ -130,7 +130,8 @@ end
 template value_for_platform(
   [ "ubuntu","debian","fedora" ] => { "default" => "#{node["apache"]["dir"]}/sites-available/openstack-dashboard" },
   "fedora" => { "default" => "#{node["apache"]["dir"]}/vhost.d/openstack-dashboard" },
-  [ "redhat", "centos", "suse" ] => { "default" => "#{node["apache"]["dir"]}/conf.d/openstack-dashboard" },
+  [ "redhat", "centos" ] => { "default" => "#{node["apache"]["dir"]}/conf.d/openstack-dashboard" },
+  "suse" => { "default" => "#{node["apache"]["dir"]}/conf.d/openstack-dashboard.conf" },
   "default" => { "default" => "#{node["apache"]["dir"]}/openstack-dashboard" }
   ) do
   source "dash-site.erb"
