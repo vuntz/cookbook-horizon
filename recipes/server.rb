@@ -182,18 +182,6 @@ execute "restore-selinux-context" do
     only_if { platform?("fedora") }
 end
 
-# TODO(shep)
-# Horizon has a forced dependency on there being a volume service endpoint in your keystone catalog
-# https://answers.launchpad.net/horizon/+question/189551
-
-# This is a dirty hack to deal with https://bugs.launchpad.net/nova/+bug/932468
-directory "/var/www/.novaclient" do
-  owner node["apache"]["user"]
-  group node["apache"]["group"]
-  mode "0755"
-  action :create
-end
-
 cookbook_file "#{node["horizon"]["dash_path"]}/static/dashboard/css/folsom.css" do
   only_if { node["horizon"]["theme"] == "Rackspace" and node["package_component"] == "folsom" }
   source "css/folsom.css"
