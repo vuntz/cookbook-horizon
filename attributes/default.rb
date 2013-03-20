@@ -43,8 +43,6 @@ default["horizon"]["ssl"]["key"] = "horizon.key"
 
 default["horizon"]["swift"]["enabled"] = "False"
 
-default["horizon"]["theme"] = "default"
-
 case node["platform"]
 when "fedora", "centos", "redhat", "amazon", "scientific"
   default["horizon"]["ssl"]["dir"] = "/etc/pki/tls"
