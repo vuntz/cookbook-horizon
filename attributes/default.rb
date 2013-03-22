@@ -49,21 +49,27 @@ when "fedora", "centos", "redhat", "amazon", "scientific"
   default["horizon"]["local_settings_path"] = "/etc/openstack-dashboard/local_settings"
   # TODO(shep) - Fedora does not generate self signed certs by default
   default["horizon"]["platform"] = {
-    "horizon_packages" => ["openstack-dashboard", "MySQL-python"],
+    "mysql_python_packages" => ["MySQL-python"],
+    "postgresql_python_packages" => ["python-psycopg2"],
+    "horizon_packages" => ["openstack-dashboard"],
     "package_overrides" => ""
   }
 when "suse"
   default["horizon"]["ssl"]["dir"] = "/etc/ssl"
   default["horizon"]["local_settings_path"] = "/usr/share/openstack-dashboard/openstack_dashboard/local/local_settings.py"
   default["horizon"]["platform"] = {
-    "horizon_packages" => ["openstack-dashboard", "python-mysql"],
+    "mysql_python_packages" => ["python-mysql"],
+    "postgresql_python_packages" => ["python-psycopg2"],
+    "horizon_packages" => ["openstack-dashboard"],
     "package_overrides" => ""
   }
 when "ubuntu", "debian"
   default["horizon"]["ssl"]["dir"] = "/etc/ssl"
   default["horizon"]["local_settings_path"] = "/etc/openstack-dashboard/local_settings.py"
   default["horizon"]["platform"] = {
-    "horizon_packages" => ["lessc","openstack-dashboard", "python-mysqldb"],
+    "mysql_python_packages" => ["python-mysqldb"],
+    "postgresql_python_packages" => ["python-psycopg2"],
+    "horizon_packages" => ["lessc", "openstack-dashboard"],
     "package_overrides" => "-o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-confdef'"
   }
 end
