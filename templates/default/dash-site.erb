@@ -14,7 +14,7 @@
   WSGIProcessGroup dashboard
 
   DocumentRoot <%= node["horizon"]["dash_path"] %>/.blackhole/
-  Alias /static %> <%= node["horizon"]["static_path"] %>
+  Alias /static <%= node["horizon"]["static_path"] %>
 
   <Directory />
       Options FollowSymLinks
