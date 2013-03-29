@@ -14,7 +14,7 @@
   WSGIProcessGroup dashboard
 
   DocumentRoot <%= node["horizon"]["dash_path"] %>/.blackhole/
-  Alias /media <%= node["horizon"]["dash_path"] %>/media
+  Alias /static %> <%= node["horizon"]["static_path"] %>
 
   <Directory />
       Options FollowSymLinks
@@ -23,6 +23,13 @@
 
   <Directory <%= node["horizon"]["dash_path"] %>>
       Options Indexes FollowSymLinks MultiViews
+      AllowOverride None
+      Order allow,deny
+      allow from all
+  </Directory>
+
+  <Directory <%= node["horizon"]["static_path"] %>>
+      Options FollowSymLinks MultiViews
       AllowOverride None
       Order allow,deny
       allow from all

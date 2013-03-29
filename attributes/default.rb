@@ -47,6 +47,7 @@ case node["platform"]
 when "fedora", "centos", "redhat", "amazon", "scientific"
   default["horizon"]["ssl"]["dir"] = "/etc/pki/tls"
   default["horizon"]["local_settings_path"] = "/etc/openstack-dashboard/local_settings"
+  default["horizon"]["static_path"] = "/usr/share/openstack-dashboard/static"
   # TODO(shep) - Fedora does not generate self signed certs by default
   default["horizon"]["platform"] = {
     "mysql_python_packages" => ["MySQL-python"],
@@ -57,6 +58,7 @@ when "fedora", "centos", "redhat", "amazon", "scientific"
 when "suse"
   default["horizon"]["ssl"]["dir"] = "/etc/ssl"
   default["horizon"]["local_settings_path"] = "/usr/share/openstack-dashboard/openstack_dashboard/local/local_settings.py"
+  default["horizon"]["static_path"] = "/usr/share/openstack-dashboard/static"
   default["horizon"]["platform"] = {
     "mysql_python_packages" => ["python-mysql"],
     "postgresql_python_packages" => ["python-psycopg2"],
@@ -66,6 +68,7 @@ when "suse"
 when "ubuntu", "debian"
   default["horizon"]["ssl"]["dir"] = "/etc/ssl"
   default["horizon"]["local_settings_path"] = "/etc/openstack-dashboard/local_settings.py"
+  default["horizon"]["static_path"] = "/usr/share/pyshared/horizon/static"
   default["horizon"]["platform"] = {
     "mysql_python_packages" => ["python-mysqldb"],
     "postgresql_python_packages" => ["python-psycopg2"],
